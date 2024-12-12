@@ -1,0 +1,57 @@
+why should we use Docker!
+consistency environment it means the app will work in all devices
+
+How does docker works! 
+There are two concepts in docker: images and containers
+Images: is lightweight standalone , executable package, that includes everything to run the app
+Container: it's a runnable instance of a docker image, represents the execution environment of a specific app, like code, runtime and libraries
+Volumes: is a persistent data storage mechanism that allows data to be shared between a data container and a host machine or between multiple containers
+Docker Network: it's a communication channel that enables docker containers to talk to each other, or with the external world, docker network connects each container that run an application with each other, they can communicate with other, they can share information and data.
+Docker workflow:
+-Docker Client: the user interface which we use docker from and use docker commands
+-Docker host: the background process responsible for managing containers on the host system 
+-Docker registry(docker hub): repo of docker images, like git with GitHub
+
+---------------Docker Commands-------------------------------------------------
+FROM: specifies the base image to use for the new image
+WORKDIR: sets the working directory for the following instructions
+COPY: copies the files from the build context to the image
+RUN: executes commands in the shell during image build
+EXPOSE: informs docket that the container will listen to a specific port at runtime
+ENV: sets the environment variables during build process
+ARG: define build time variables like having a note u can change before u start cooking
+VOLUME: creates a mount point for external mounted volumes, specifying a location inside your container where u can connect external storage
+CMD: provides default command to execute when the container starts
+ENTRYPOINT: specifies the default executable to be run when the computer start
+docker build: This command tells Docker to create (build) a new container image from a Dockerfile
+-t react-docker: The -t flag is used to tag the newly built Docker image with a name (react-docker in this case). This makes it easier to refer to the image later when you run or manage it.
+docker ps: to list the active containers 
+docker ps -a: to list all the containers 
+docker container prune: remove all inactive containers
+-v "$(pwd):/app":Mounts the current directory on the host ($(pwd) expands to the present working directory) to the /app directory inside the container.
+This allows you to:
+Share files between your local machine and the container in real-time.
+Make changes to the files on your host machine and see them reflected immediately in the container.
+-v /app/node_modules:Prevents the node_modules directory inside the container (/app/node_modules) from being overwritten by the volume mount from the host ($(pwd):/app).
+Why this is important:
+Without this, the node_modules folder inside the container would be replaced by the node_modules folder on the host machine (which may not exist or may have incompatible dependencies).
+By using this volume, the node_modules directory inside the container remains isolated, ensuring it contains only the dependencies installed by the containerized environment.
+
+--------------Steps for creating a docker container----------------------------------------------------------------
+step 1: build the image (docker build -t react-docker .)
+step 2: run the image with port mapping (docker run -p 5173:5173 react-docker)
+Step 3: Run the Image with Volume Mapping (docker run -p 5173:5173 -v "$(pwd):/app" react-docker) To ensure live changes in your project are reflected in the container
+Step 4: Debug Issues with the Running Container If you encounter errors or need to check logs, you can view the container logs:
+(docker logs <container-id>)
+Step 5: Verify the Application
+Step 6: Stop and Remove Containers (docker stop <container-id>)
+Step 7: Push the Image to Docker Hub (Optional): (docker tag react-docker <your-dockerhub-username>/react-docker)
+we need to login to docker (docker login) and after that, create a token in docker desktop
+step 8:Push the image: (docker push <your-dockerhub-username>/react-docker)
+
+
+
+-----------Docker Compose------------------------------------------------------
+Docker Compose is a tool that allows you to define and manage multi-container Docker applications.
+With Docker Compose, you can describe the services, networks, and volumes needed for your application in a simple YAML file (docker-compose.yml) and use a single command to start, stop, or manage your application.
+
