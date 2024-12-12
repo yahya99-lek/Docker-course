@@ -61,3 +61,19 @@ The concept of "watch" in Docker Compose isn't a built-in docker-compose command
 1. Purpose
 When working with Docker Compose in a development environment, you often make changes to your code.
 Instead of manually stopping, rebuilding, and restarting your containers every time, you want Docker Compose to watch for changes and rebuild/restart services automatically.
+
+-------------- steps with docker compos----------------------------------------------------------------
+step1: Run docker init : This command will create the necessary configuration files like:
+docker-compose.yml
+Dockerfile
+step2: Modify the docker-compose.yml as Needed
+step3: Add Your Application Files
+Place your project files (e.g., package.json, application source code) in the project directory.
+Step 4: Build and Start Your Services: docker compose up -d
+step5: watch for changes of the applications: docker compose watch
+
+----------------- Docker scout ----------------------------------------------------------------
+Docker Scout is a tool designed to enhance the security and efficiency of working with Docker containers.
+It helps identify vulnerabilities, outdated dependencies, and potential compliance issues within container images.
+By integrating seamlessly with Docker Desktop and Docker Hub, Docker Scout provides a robust analysis of your images, ensuring that any security issues are detected and addressed early in the development lifecycle.
+

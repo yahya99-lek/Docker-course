@@ -22,7 +22,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
   console.log("Hello World!".rainbow);
 
-  res.send("Hello World name!");
+  res.send("Hello World!");
 });
 
 app.get("/api/anime", async (req, res) => {
