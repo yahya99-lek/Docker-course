@@ -55,3 +55,9 @@ step 8:Push the image: (docker push <your-dockerhub-username>/react-docker)
 Docker Compose is a tool that allows you to define and manage multi-container Docker applications.
 With Docker Compose, you can describe the services, networks, and volumes needed for your application in a simple YAML file (docker-compose.yml) and use a single command to start, stop, or manage your application.
 
+---------------Docker compose watch ----------------------------------------------------
+What is the Concept of "Docker Compose Watch"?
+The concept of "watch" in Docker Compose isn't a built-in docker-compose command, but it typically refers to watching file changes and automatically rebuilding/reloading services or containers during development workflows.
+1. Purpose
+When working with Docker Compose in a development environment, you often make changes to your code.
+Instead of manually stopping, rebuilding, and restarting your containers every time, you want Docker Compose to watch for changes and rebuild/restart services automatically.
